@@ -5,7 +5,7 @@ spostiamo la logica in un file functions.php che includeremo poi nella pagina pr
 
 include __DIR__ . '/functions/functions.php';
 
-$new_password = generatePassword((int)$_GET['password_length']);
+$new_password = generatePassword((int)$_GET['password_length'], $_GET['numbers'], $_GET['characters'], $_GET['symbols']);
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +20,8 @@ $new_password = generatePassword((int)$_GET['password_length']);
 </head>
 
 <body>
+    <h1 class="text-center my-2 text-primary">Strong password generator</h1>
+    <h3 class="text-center my-2 ">Genera una password sicura</h3>
     <div class="container py-5">
         <form action="index.php" method="GET" class="form">
             <div class="row g-3 align-items-center">
@@ -29,13 +31,24 @@ $new_password = generatePassword((int)$_GET['password_length']);
                 <div class="col-auto">
                     <input type="number" id="password_length" name="password_length" class="form-control" aria-describedby="passwordHelpInline">
                 </div>
-                <div>
-                    <div id="passwordHelpInline" class="form-text">
-                        Nuova password: <?= $new_password ?>
-                    </div>
-                </div>
+
                 <div class="col-auto">
                     <button class=" btn btn-primary" type="submit">Invia</button>
+                </div>
+                <div id="passwordHelpInline" class="form-text col-auto">
+                    Nuova password: <?= $new_password ?>
+                </div>
+                <div>
+                    <input type="checkbox" name="numbers" id="numbers">
+                    <label for="numbers">Numeri</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="characters" id="characters">
+                    <label for="characters">Lettere</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="symbols" id="symbols">
+                    <label for="symbols">Simboli</label>
                 </div>
             </div>
         </form>
