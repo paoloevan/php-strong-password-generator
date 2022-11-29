@@ -3,7 +3,11 @@ Una nostra funzione utilizzerà questo dato per generare una password casuale
 (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente.
 Scriviamo tutto (logica e layout) in un unico file index.php -->
 <?php
-var_dump(strlen($_GET['password']));
+var_dump((int)$_GET['password_length']);
+
+function generatePassword($passlen)
+{
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +26,10 @@ var_dump(strlen($_GET['password']));
         <form action="index.php" method="GET" class="form">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
-                    <label for="password" class="col-form-label">Password</label>
+                    <label for="password_length" class="col-form-label">Lunghezza password:</label>
                 </div>
                 <div class="col-auto">
-                    <input type="text" id="password" name="password" class="form-control" aria-describedby="passwordHelpInline">
+                    <input type="number" id="password_length" name="password_length" class="form-control" aria-describedby="passwordHelpInline">
                 </div>
                 <div class="col-auto">
                     <span id="passwordHelpInline" class="form-text">
